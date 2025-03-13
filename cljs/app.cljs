@@ -5,13 +5,12 @@
 ;; Define our components
 (defn header []
   [:header
-   [:h1 "The Waveney Valley"]
-   [:p "Exploring History & Ecology"]])
+   [:h1 "waveney.org"]])
 
 (defn coming-soon []
   [:div.coming-soon
    [:h2 "Coming Soon"]
-   [:p "A comprehensive resource documenting the rich heritage and natural environment of the Waveney Valley."]])
+   [:p "Meandering through the ecology, culture and history of East Anglia. To work with us reach out with the contact link below, or sign up to our mailing list for updates."]])
 
 (defn category [title]
   [:div.category
@@ -19,14 +18,28 @@
 
 (defn categories []
   [:div.categories
-   [category "History"]
    [category "Wildlife"]
-   [category "Landscapes"]
+   [category "History"]
+   [category "Folklore"]
+   [category "Music"]
+   [category "Art"]
+   [category "Events"]
    [category "Conservation"]])
+
+(defn join-mail-list []
+  [:div.join
+   [:h3 "Sign up to stay updated"]
+   [:input {:type "email"
+            :id "email"
+            :name "email"
+            :placeholder "enter email address"}]
+   [:button "Submit"]])
 
 (defn footer []
   [:footer
-   [:p "© 2025 Waveney Valley Project"]])
+   [:p "© 2025 Waveney.org" "  "
+    [:a {:href "mailto:waveney.vixen400@passfwd.com"}
+     "Contact us"]]])
 
 ;; Main app component
 (defn app []
@@ -34,7 +47,8 @@
    [header]
    [:div.container
     [coming-soon]
-    [categories]]
+    [categories]
+    [join-mail-list]]
    [footer]])
 
 ;; Render the app
