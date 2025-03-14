@@ -42,9 +42,13 @@
    [:h2 "Coming Soon"]
    [:p "Meandering through the ecology, culture and history of the Waveney Valley region."
     [:br]
+    "•"
+    [:br]
     "A homegrown online hub away from the corporate web."
     [:br]
-    "To work with us reach out with the contact link below, or sign up to our mailing list for updates."]])
+    "•"
+    [:br]
+    "To contribute please reach out with the contact link below, or sign up to our mailing list for updates."]])
 
 (defn category [title]
   [:div.category
