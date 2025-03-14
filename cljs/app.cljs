@@ -120,7 +120,23 @@
     [:li
      [:a {:href "https://visitwaveneyvalley.co.uk/"} "Visit Waveney Valley (Tourism Information)"]]
     [:li
-     [:a {:href "https://www.suffolkwildlifetrust.org/WaLOR"} "Waveney & Little Ouse Recovery Project (Restoration)"]]]])
+     [:a {:href "https://www.suffolkwildlifetrust.org/WaLOR"} "Waveney & Little Ouse Recovery Project (Restoration)"]]
+    [:li
+     [:a {:href "https://www.nationalparks.uk/2024/09/30/discover-folklore-of-the-broads/"} "National Parks UK - Folklore of the Broads"]]
+    [:li
+     [:a {:href "https://www.wilcuma.org.uk/east-anglia/the-south-folk-of-the-east-angles/"} "The South Folk of the East Angles (Anglo-Saxon History)"]]
+    [:li
+     [:a {:href "https://www.broads-authority.gov.uk/boating/navigating-the-broads/water-depths-and-navigation-notes/river-waveney"} "Broads Authority - River Waveney Depth and Navigation Notes"]
+     ]
+    [:li
+     [:a {:href "https://lfw-prdg.aws.defra.cloud/river-and-sea-levels/target-area/054WACDV3B?group=rainfall&v=map-live&lyr=ri,gr,mv&ext=0.726202,51.976492,1.825489,53.258732&fid=stations.9620"} "DEFRA - Water Level Gauges (interactive map)"]
+     ]
+    [:li
+     [:a {:href "https://www.eatmt.org.uk/waveney-songs/"} "East Anglian Traditional Music - Waveney Songs Community Project"]
+     ]
+    [:li
+     [:a {:href "https://suffolk.camra.org.uk/"} "Suffolk Real Ale Pubs (interactive map)"]
+     ]]])
 
 (defn footer []
   [:footer
