@@ -58,8 +58,13 @@ footer {
     margin: 1rem;
     flex-basis: 200px;
     text-align: center;
+    transition: background-color 0.3s, color 0.3s;
 }
 
+.category:hover {
+    background-color: #5c8d76;
+    color: white;
+}
 
 label {
     display: block;
@@ -85,6 +90,7 @@ input:focus, textarea:focus, select:focus {
 
 button {
     color: white;
+    background-color: #5c8d76;
     padding: 0.75rem 2rem;
     cursor: pointer;
     font-weight: bold;
