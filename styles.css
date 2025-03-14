@@ -9,20 +9,17 @@ body {
 header {
     color: black;
     text-align: center;
-    padding: 1rem;
+    padding: 0.2rem;
 }
 
 .container {
-    max-width: 1000px;
     margin: 0 auto;
-    padding: 2rem;
 }
 
 .coming-soon {
     background-color: #5c8d76;
     color: white;
     padding: 1.5rem;
-    margin: 1rem;
     flex-basis: 200px;
     text-align: center;
 
@@ -32,7 +29,6 @@ header {
     background-color: #5c8d76;
     color: white;
     padding: 1.5rem;
-    margin: 1rem;
     flex-basis: 200px;
     text-align: center;
 
