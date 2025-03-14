@@ -118,7 +118,9 @@
     [:li
      [:a {:href "https://www.riverwaveneytrust.org/"} "River Waveney Trust (Conservation and Restoration)"]]
     [:li
-     [:a {:href "https://visitwaveneyvalley.co.uk/"} "Visit Waveney Valley (Tourism Information)"]]
+     [:a {:href "https://visitwaveneyvalley.co.uk/"} "Visit Waveney Valley (tourism information)"]]
+    [:li
+     [:a {:href "https://visitwaveneyvalley.co.uk/maps/"} "Visit Waveney Valley - trail maps"]]
     [:li
      [:a {:href "https://www.suffolkwildlifetrust.org/WaLOR"} "Waveney & Little Ouse Recovery Project (Restoration)"]]
     [:li
