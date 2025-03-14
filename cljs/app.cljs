@@ -111,6 +111,17 @@
                       :zoom 10
                       }))})))
 
+(defn useful-links []
+  [:div.useful-links
+   [:h3 "Useful Links"]
+   [:ul
+    [:li
+     [:a {:href "https://www.riverwaveneytrust.org/"} "River Waveney Trust (Conservation and Restoration)"]]
+    [:li
+     [:a {:href "https://visitwaveneyvalley.co.uk/"} "Visit Waveney Valley (Tourism Information)"]]
+    [:li
+     [:a {:href "https://www.suffolkwildlifetrust.org/WaLOR"} "Waveney & Little Ouse Recovery Project (Restoration)"]]]])
+
 (defn footer []
   [:footer
    [:p "© 2025 Waveney.org" "  "
@@ -125,6 +136,7 @@
     [coming-soon]
     [:div {:id "map"}]
     [categories]
+    [useful-links]
     [join-mail-list]]
    [footer]])
 
