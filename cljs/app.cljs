@@ -40,7 +40,11 @@
 (defn coming-soon []
   [:div.coming-soon
    [:h2 "Coming Soon"]
-   [:p "Meandering through the ecology, culture and history of the Waveney Valley region. An online hub liberated from corporate social media. To work with us reach out with the contact link below, or sign up to our mailing list for updates."]])
+   [:p "Meandering through the ecology, culture and history of the Waveney Valley region."
+    [:br]
+    "An online hub liberated from corporate social media."
+    [:br]
+    "To work with us reach out with the contact link below, or sign up to our mailing list for updates."]])
 
 (defn category [title]
   [:div.category

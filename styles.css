@@ -45,14 +45,22 @@ footer {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin: 1rem 0;
+    margin: 1rem;
+}
+
+.useful-links {
+    padding: 0.2rem;
+    margin: 1rem;
 }
 
 .category {
     background-color: transparent;
     padding: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border: 1px, solid, #5c8d76;
+    width: 7rem;
     margin: 0.5rem;
-    flex-basis: 100px;
     text-align: center;
     transition: background-color 0.3s, color 0.3s;
 }
