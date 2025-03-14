@@ -1,7 +1,8 @@
 (ns app
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            ))
 
 ;; VARS
 (def JOIN_MAIL_LIST_URL "https://kbscdztdalvuuelcvpjr.supabase.co/rest/v1/mailing_list")
@@ -97,6 +98,19 @@
                                              :else "green")}}
       "Submit"]]))
 
+(defn ol-map []
+  (js/ol.Map.
+   (clj->js
+    {:layers [(js/ol.layer.Tile.
+               (clj->js {:source (js/ol.source.OSM.)}))]
+     :target "map"
+     :view (js/ol.View.
+            (clj->js {:center
+                      [1.2375777300280788,
+                       52.468247948753316]
+                      :zoom 10
+                      }))})))
+
 (defn footer []
   [:footer
    [:p "© 2025 Waveney.org" "  "
@@ -109,9 +123,14 @@
    [header]
    [:div.container
     [coming-soon]
+    [:div {:id "map"}]
     [categories]
     [join-mail-list]]
    [footer]])
 
 ;; Render the app
-(rdom/render [app] (js/document.getElementById "app"))
+(rdom/render [app]
+             (js/document.getElementById "app"))
+
+(js/ol.proj.useGeographic.)
+(ol-map)
