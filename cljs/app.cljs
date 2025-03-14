@@ -100,7 +100,7 @@
 (defn footer []
   [:footer
    [:p "© 2025 Waveney.org" "  "
-    [:a {:href "mailto:waveney.vixen400@passfwd.com"}
+    [:a {:href "mailto:info@waveney.org"}
      "Contact us"]]])
 
 ;; Main app component
