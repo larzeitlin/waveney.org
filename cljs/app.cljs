@@ -42,7 +42,7 @@
    [:h2 "Coming Soon"]
    [:p "Meandering through the ecology, culture and history of the Waveney Valley region."
     [:br]
-    "An online hub liberated from corporate social media."
+    "A homegrown online hub away from the corporate web."
     [:br]
     "To work with us reach out with the contact link below, or sign up to our mailing list for updates."]])
 
@@ -57,11 +57,11 @@
    "Trails"
    "Music"
    "Art"
-   "Accomodation"
    "Activities"
    "Pubs"
    "Events"
-   "Conservation"])
+   "Ecology"
+   "Photographs"])
 
 (defn categories []
   (->> categories-list
