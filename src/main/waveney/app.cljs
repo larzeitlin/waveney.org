@@ -2,39 +2,10 @@
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
             [clojure.string :as string]
-            ["ol/proj" :as ol-proj]
-            ["ol/layer/Tile$default" :as ol-Tile]
-            ["ol/Map$default" :as ol-Map]
-            ["ol/source/OSM$default" :as ol-OSM]
-            ["ol/source/XYZ$default" :as ol-XYZ]
-            ["ol/View$default" :as ol-View]))
+            [waveney.useful-links :as useful-links]
+            [waveney.db :as db]
+            [waveney.carto :as carto]))
 
-;; VARS
-(def JOIN_MAIL_LIST_URL "https://kbscdztdalvuuelcvpjr.supabase.co/rest/v1/mailing_list")
-(def ANON_API_KEY
-  ;; safe to expose the anon key
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imtic2NkenRkYWx2dXVlbGN2cGpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE5MDYxMzQsImV4cCI6MjA1NzQ4MjEzNH0.dVmJYtm8RtCrea6yDt9CXe128H94DyU1XoK-EfHfqQQ")
-
-;; utils
-
-(defn validish-email? [email]
-  (boolean (re-matches #"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" email)))
-
-(defn post-request [url data callback]
-  (-> (js/fetch url
-                (clj->js {:method "POST"
-                          :headers {"Content-Type" "application/json"
-                                    "apikey" ANON_API_KEY
-                                    "Prefer" "return=minimal"}
-                          :body (js/JSON.stringify (clj->js data))}))
-      (.then (fn [response]
-               [response.status response.json]))
-      (.then (fn [[status data]]
-               (callback status (js->clj data :keywordize-keys true))))
-      (.catch (fn [error]
-                (js/console.error "Error:" error)))))
-
-;; Define our components
 (defn header []
   [:header
    [:h1 "waveney.org"]])
@@ -75,20 +46,15 @@
        (map #(vector category %))
        (into [:div.categories])))
 
+;; Mailing list signup
+
 (defonce email* (r/atom ""))
 
-(defn send-mail-list-join-req [email-address]
-  (let [callback (fn [status _response]
-                   (cond
-                     (= status 409)
-                     (js/alert "email address already added")
-                     (= status 201)
-                     (js/alert "signed you up"))
-                   (reset! email* ""))]
-    (post-request JOIN_MAIL_LIST_URL
-                  {:email_address email-address
-                   :subscribed true}
-                  callback)))
+(defn reset-email-field-to-empty []
+  (reset! email* ""))
+
+(defn validish-email? [email]
+  (boolean (re-matches #"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" email)))
 
 (defn join-mail-list []
   (let [email @email*
@@ -101,7 +67,7 @@
               :value email
               :on-change #(reset! email* (-> % .-target .-value))
               :placeholder "enter email address"}]
-     [:button {:on-click #(send-mail-list-join-req email)
+     [:button {:on-click (db/join-mail-list-req email reset-email-field-to-empty)
                :disabled submit-button-disabled?
                :style {:background-color (cond
                                            (string/blank? email) "gray"
@@ -109,66 +75,14 @@
                                            :else "green")}}
       "Submit"]]))
 
-(def openweather-api-key
-  "97da2c69b0746b783f859c90226c3074")
-
-(defn ol-map []
-  (ol-Map.
-   (clj->js
-    {:layers [(ol-Tile.
-                 (clj->js {:source (ol-OSM.)}))
-              (ol-Tile.
-               (clj->js {:source (ol-XYZ.
-                                  (clj->js {:url (str "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid="
-                                                      openweather-api-key
-                                                      )
-                                            :attributions "&copy; <a href=\"https://openweathermap.org/\">OpenWeatherMap</a>"}))
-                         :opacity 0.7}))]
-     :target "map"
-     :view (ol-View.
-            (clj->js {:center
-                      [1.2375777300280788
-                       52.468247948753316]
-                      :zoom 10
-                      :extent [0.20094809414538872
-                               52.116568343156075
-                               1.8549922442829825
-                               52.76893220698773]}))})))
-
 (defn useful-links []
   [:div.useful-links
    [:h3 "Useful Links"]
-   [:ul
-    [:li
-     [:a {:href "https://www.riverwaveneytrust.org/"}
-      "River Waveney Trust (Conservation and Restoration)"]]
-    [:li
-     [:a {:href "https://visitwaveneyvalley.co.uk/"}
-      "Visit Waveney Valley (tourism information)"]]
-    [:li
-     [:a {:href "https://visitwaveneyvalley.co.uk/maps/"}
-      "Visit Waveney Valley - trail maps"]]
-    [:li
-     [:a {:href "https://www.suffolkwildlifetrust.org/WaLOR"}
-      "Waveney & Little Ouse Recovery Project (Restoration)"]]
-    [:li
-     [:a {:href "https://www.nationalparks.uk/2024/09/30/discover-folklore-of-the-broads/"}
-      "National Parks UK - Folklore of the Broads"]]
-    [:li
-     [:a {:href "https://www.wilcuma.org.uk/east-anglia/the-south-folk-of-the-east-angles/"}
-      "The South Folk of the East Angles (Anglo-Saxon History)"]]
-    [:li
-     [:a {:href "https://www.broads-authority.gov.uk/boating/navigating-the-broads/water-depths-and-navigation-notes/river-waveney"}
-      "Broads Authority - River Waveney Depth and Navigation Notes"]]
-    [:li
-     [:a {:href "https://lfw-prdg.aws.defra.cloud/river-and-sea-levels/target-area/054WACDV3B?group=rainfall&v=map-live&lyr=ri,gr,mv&ext=0.726202,51.976492,1.825489,53.258732&fid=stations.9620"}
-      "DEFRA - Water Level Gauges (interactive map)"]]
-    [:li
-     [:a {:href "https://www.eatmt.org.uk/waveney-songs/"}
-      "East Anglian Traditional Music - Waveney Songs Community Project"]]
-    [:li
-     [:a {:href "https://suffolk.camra.org.uk/"}
-      "Suffolk Real Ale Pubs (interactive map)"]]]])
+   (into [:ul]
+         (map (fn [[desc url]]
+                [:li [:a {:href url}
+                      desc]])
+              useful-links/description->url))])
 
 (defn footer []
   [:footer
@@ -194,5 +108,4 @@
   (rdom/render [app]
                (js/document.getElementById "app"))
 
-  (ol-proj/useGeographic.)
-  (ol-map))
+  (carto/init-map-widget))
