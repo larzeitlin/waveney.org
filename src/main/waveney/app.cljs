@@ -6,6 +6,7 @@
             ["ol/layer/Tile$default" :as ol-Tile]
             ["ol/Map$default" :as ol-Map]
             ["ol/source/OSM$default" :as ol-OSM]
+            ["ol/source/XYZ$default" :as ol-XYZ]
             ["ol/View$default" :as ol-View]))
 
 ;; VARS
@@ -52,7 +53,7 @@
     "To contribute please reach out with the contact link below, or sign up to our mailing list for updates."]])
 
 (defn category [title]
-  [:div.category
+  [:button.category
    [:h3 title]])
 
 (def categories-list
@@ -66,7 +67,8 @@
    "Pubs"
    "Events"
    "Ecology"
-   "Photographs"])
+   "Photos"
+   "Weather"])
 
 (defn categories []
   (->> categories-list
@@ -107,42 +109,66 @@
                                            :else "green")}}
       "Submit"]]))
 
+(def openweather-api-key
+  "97da2c69b0746b783f859c90226c3074")
+
 (defn ol-map []
   (ol-Map.
    (clj->js
     {:layers [(ol-Tile.
-               (clj->js {:source (ol-OSM.)}))]
+                 (clj->js {:source (ol-OSM.)}))
+              (ol-Tile.
+               (clj->js {:source (ol-XYZ.
+                                  (clj->js {:url (str "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid="
+                                                      openweather-api-key
+                                                      "")
+                                            :attributions "&copy; <a href=\"https://openweathermap.org/\">OpenWeatherMap</a>"}))
+                         :opacity 0.7}))]
      :target "map"
      :view (ol-View.
             (clj->js {:center
-                      [1.2375777300280788,
+                      [1.2375777300280788
                        52.468247948753316]
-                      :zoom 10}))})))
+                      :zoom 10
+                      :extent [0.20094809414538872
+                               52.116568343156075
+                               1.8549922442829825
+                               52.76893220698773]}))})))
 
 (defn useful-links []
   [:div.useful-links
    [:h3 "Useful Links"]
    [:ul
     [:li
-     [:a {:href "https://www.riverwaveneytrust.org/"} "River Waveney Trust (Conservation and Restoration)"]]
+     [:a {:href "https://www.riverwaveneytrust.org/"}
+      "River Waveney Trust (Conservation and Restoration)"]]
     [:li
-     [:a {:href "https://visitwaveneyvalley.co.uk/"} "Visit Waveney Valley (tourism information)"]]
+     [:a {:href "https://visitwaveneyvalley.co.uk/"}
+      "Visit Waveney Valley (tourism information)"]]
     [:li
-     [:a {:href "https://visitwaveneyvalley.co.uk/maps/"} "Visit Waveney Valley - trail maps"]]
+     [:a {:href "https://visitwaveneyvalley.co.uk/maps/"}
+      "Visit Waveney Valley - trail maps"]]
     [:li
-     [:a {:href "https://www.suffolkwildlifetrust.org/WaLOR"} "Waveney & Little Ouse Recovery Project (Restoration)"]]
+     [:a {:href "https://www.suffolkwildlifetrust.org/WaLOR"}
+      "Waveney & Little Ouse Recovery Project (Restoration)"]]
     [:li
-     [:a {:href "https://www.nationalparks.uk/2024/09/30/discover-folklore-of-the-broads/"} "National Parks UK - Folklore of the Broads"]]
+     [:a {:href "https://www.nationalparks.uk/2024/09/30/discover-folklore-of-the-broads/"}
+      "National Parks UK - Folklore of the Broads"]]
     [:li
-     [:a {:href "https://www.wilcuma.org.uk/east-anglia/the-south-folk-of-the-east-angles/"} "The South Folk of the East Angles (Anglo-Saxon History)"]]
+     [:a {:href "https://www.wilcuma.org.uk/east-anglia/the-south-folk-of-the-east-angles/"}
+      "The South Folk of the East Angles (Anglo-Saxon History)"]]
     [:li
-     [:a {:href "https://www.broads-authority.gov.uk/boating/navigating-the-broads/water-depths-and-navigation-notes/river-waveney"} "Broads Authority - River Waveney Depth and Navigation Notes"]]
+     [:a {:href "https://www.broads-authority.gov.uk/boating/navigating-the-broads/water-depths-and-navigation-notes/river-waveney"}
+      "Broads Authority - River Waveney Depth and Navigation Notes"]]
     [:li
-     [:a {:href "https://lfw-prdg.aws.defra.cloud/river-and-sea-levels/target-area/054WACDV3B?group=rainfall&v=map-live&lyr=ri,gr,mv&ext=0.726202,51.976492,1.825489,53.258732&fid=stations.9620"} "DEFRA - Water Level Gauges (interactive map)"]]
+     [:a {:href "https://lfw-prdg.aws.defra.cloud/river-and-sea-levels/target-area/054WACDV3B?group=rainfall&v=map-live&lyr=ri,gr,mv&ext=0.726202,51.976492,1.825489,53.258732&fid=stations.9620"}
+      "DEFRA - Water Level Gauges (interactive map)"]]
     [:li
-     [:a {:href "https://www.eatmt.org.uk/waveney-songs/"} "East Anglian Traditional Music - Waveney Songs Community Project"]]
+     [:a {:href "https://www.eatmt.org.uk/waveney-songs/"}
+      "East Anglian Traditional Music - Waveney Songs Community Project"]]
     [:li
-     [:a {:href "https://suffolk.camra.org.uk/"} "Suffolk Real Ale Pubs (interactive map)"]]]])
+     [:a {:href "https://suffolk.camra.org.uk/"}
+      "Suffolk Real Ale Pubs (interactive map)"]]]])
 
 (defn footer []
   [:footer
