@@ -1,0 +1,1 @@
+{"version":3,"sources":["waveney/app_state.cljs"],"mappings":";AAGA,AAAKA,8BACH,gDAAA,hDAACC","names":["waveney.app-state/app-state","reagent.core.atom"],"sourcesContent":["(ns waveney.app-state\n  (:require [reagent.core :as r]))\n\n(def app-state\n  (r/atom {}))\n"]}

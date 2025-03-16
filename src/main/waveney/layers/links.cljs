@@ -1,4 +1,4 @@
-(ns waveney.useful-links)
+(ns waveney.layers.links)
 
 (def description->url
   {"waveney & little ouse recovery project (restoration)"
@@ -27,3 +27,12 @@
    "https://www.eatmt.org.uk/waveney-songs/",
 
    "broads authority - river waveney depth and navigation notes" "https://www.broads-authority.gov.uk/boating/navigating-the-broads/water-depths-and-navigation-notes/river-waveney"})
+    
+(defn view []
+  [:div.useful-links
+   [:h3 "Useful Links"]
+   (into [:ul]
+         (map (fn [[desc url]]
+                [:li [:a {:href url}
+                      desc]])
+              description->url))])

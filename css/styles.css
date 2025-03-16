@@ -13,6 +13,7 @@ header {
 }
 
 .container {
+    overflow: hidden;
     margin: 0 auto;
 }
 
@@ -71,11 +72,24 @@ footer {
     color: white;
 }
 
+.category[data-selected="true"] {
+    background-color: #5c8d76;
+    color: white;
+}
+
 label {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: #5c8d76;
+}
+
+label.weather-layer {
+}
+
+fieldset.weather-layer {
+    width: 10rem;
+    margin: 1rem;
 }
 
 input, textarea, select {

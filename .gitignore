@@ -1,0 +1,17 @@
+# Clojure/ClojureScript development
+.lsp/
+.shadow-cljs/
+.clj-kondo/
+.cpcache/
+
+# Node.js
+node_modules/
+
+# macOS system files
+.DS_Store
+
+# Git directory
+.git/
+
+# CSS directory
+css/

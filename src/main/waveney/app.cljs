@@ -2,9 +2,11 @@
   (:require [reagent.core :as r]
             [reagent.dom :as rdom]
             [clojure.string :as string]
-            [waveney.useful-links :as useful-links]
             [waveney.db :as db]
-            [waveney.carto :as carto]))
+            [waveney.carto :as carto]
+            [waveney.layers.links :as layers.links]
+            [waveney.layers.weather :as layers.weather]
+            [waveney.app-state :refer [app-state]]))
 
 (defn header []
   [:header
@@ -23,28 +25,70 @@
     [:br]
     "To contribute please reach out with the contact link below, or sign up to our mailing list for updates."]])
 
-(defn category [title]
-  [:button.category
-   [:h3 title]])
+(defn placeholder-view []
+  [:h3 {:style {:text-align "center"}} "Coming Soon"])
 
-(def categories-list
-  ["Wildlife"
-   "History"
-   "Folklore"
-   "Trails"
-   "Music"
-   "Art"
-   "Activities"
-   "Pubs"
-   "Events"
-   "Ecology"
-   "Photos"
-   "Weather"])
+(def views
+  [{:id :view.wildlife
+    :display-name "Wildlife"
+    :view placeholder-view}
+   {:id :view.history
+    :display-name "History"
+    :view placeholder-view}
+   {:id :view.folklore
+    :display-name "Folklore"
+    :view placeholder-view}
+   {:id :view.trails
+    :display-name "trails"
+    :view placeholder-view}
+   {:id :view.music
+    :display-name "Music"
+    :view placeholder-view}
+   {:id :view.art
+    :display-name "Art"
+    :view placeholder-view}
+   {:id :view.activities
+    :display-name "Activities"
+    :view placeholder-view}
+   {:id :view.pubs
+    :display-name "Pubs"
+    :view placeholder-view}
+   {:id :view.events
+    :display-name "Event"
+    :view placeholder-view}
+   {:id :view.weather
+    :display-name "Weather"
+    :view layers.weather/view}
+   {:id :view.ecology
+    :display-name "Ecology"
+    :view placeholder-view}
+   {:id :view.photos
+    :display-name "Photos"
+    :view placeholder-view}
+   {:id :view.links
+    :display-name "Links"
+    :view layers.links/view}])
 
-(defn categories []
-  (->> categories-list
-       (map #(vector category %))
+(def *view-state (r/atom
+                  (->> views
+                       (filter #(= :view.weather (:id %)))
+                       first)))
+
+
+(defn view-button [{:keys [id display-name] :as view}]
+  [:button.category {:on-click #(reset! *view-state view)
+                     :data-selected (= id (:id @*view-state))
+                     :id id}
+   [:h3 display-name]])
+
+(defn view-buttons []
+  (->> views
+       (map #(vector view-button %))
        (into [:div.categories])))
+
+(defn render-view [{:keys [display-name view]}]
+  [:div.view [:h3 {:style {:text-align "center"}} display-name]
+   [view]])
 
 ;; Mailing list signup
 
@@ -75,15 +119,6 @@
                                            :else "green")}}
       "Submit"]]))
 
-(defn useful-links []
-  [:div.useful-links
-   [:h3 "Useful Links"]
-   (into [:ul]
-         (map (fn [[desc url]]
-                [:li [:a {:href url}
-                      desc]])
-              useful-links/description->url))])
-
 (defn footer []
   [:footer
    [:p "© 2025 Waveney.org" "  "
@@ -97,8 +132,9 @@
    [:div.container
     [coming-soon]
     [:div {:id "map"}]
-    [categories]
-    [useful-links]
+    [view-buttons]
+    [render-view @*view-state]
+    #_[:p (str @app-state)]
     [join-mail-list]]
    [footer]])
 
@@ -107,4 +143,5 @@
   (rdom/render
    [app]
    (js/document.getElementById "app"))
-  (carto/init-map-widget))
+  (swap! app-state assoc :ol-map (carto/init-map-widget)))
+
