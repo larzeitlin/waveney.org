@@ -2,13 +2,13 @@ goog.provide('waveney.db');
 waveney.db.post_request = (function waveney$db$post_request(url,data,callback){
 return fetch(url,cljs.core.clj__GT_js(new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"method","method",55703592),"POST",new cljs.core.Keyword(null,"headers","headers",-835030129),new cljs.core.PersistentArrayMap(null, 3, ["Content-Type","application/json","apikey",waveney.env.ANON_API_KEY,"Prefer","return=minimal"], null),new cljs.core.Keyword(null,"body","body",-2049205669),JSON.stringify(cljs.core.clj__GT_js(data))], null))).then((function (response){
 return new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [response.status,response.json], null);
-})).then((function (p__20615){
-var vec__20616 = p__20615;
-var status = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20616,(0),null);
-var data__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20616,(1),null);
-var G__20619 = status;
-var G__20620 = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$variadic(data__$1,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"keywordize-keys","keywordize-keys",1310784252),true], 0));
-return (callback.cljs$core$IFn$_invoke$arity$2 ? callback.cljs$core$IFn$_invoke$arity$2(G__20619,G__20620) : callback.call(null, G__20619,G__20620));
+})).then((function (p__20738){
+var vec__20739 = p__20738;
+var status = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20739,(0),null);
+var data__$1 = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20739,(1),null);
+var G__20742 = status;
+var G__20743 = cljs.core.js__GT_clj.cljs$core$IFn$_invoke$arity$variadic(data__$1,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([new cljs.core.Keyword(null,"keywordize-keys","keywordize-keys",1310784252),true], 0));
+return (callback.cljs$core$IFn$_invoke$arity$2 ? callback.cljs$core$IFn$_invoke$arity$2(G__20742,G__20743) : callback.call(null, G__20742,G__20743));
 })).catch((function (error){
 return console.error("Error:",error);
 }));

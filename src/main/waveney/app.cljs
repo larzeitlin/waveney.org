@@ -67,7 +67,7 @@
               :value email
               :on-change #(reset! email* (-> % .-target .-value))
               :placeholder "enter email address"}]
-     [:button {:on-click (db/join-mail-list-req email reset-email-field-to-empty)
+     [:button {:on-click #(db/join-mail-list-req email reset-email-field-to-empty)
                :disabled submit-button-disabled?
                :style {:background-color (cond
                                            (string/blank? email) "gray"
@@ -92,7 +92,7 @@
 
 ;; Main app component
 (defn app []
-  [:div
+  [:div.main
    [header]
    [:div.container
     [coming-soon]
@@ -104,8 +104,7 @@
 
 ;; Render the app
 (defn init []
-  (prn "init")
-  (rdom/render [app]
-               (js/document.getElementById "app"))
-
+  (rdom/render
+   [app]
+   (js/document.getElementById "app"))
   (carto/init-map-widget))

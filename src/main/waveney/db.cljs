@@ -17,12 +17,12 @@
 
 (defn handle-join-mail-list-resp [callback-fn]
   (fn [status _response]
-                   (cond
-                     (= status 409)
-                     (js/alert "email address already added")
-                     (= status 201)
-                     (js/alert "signed you up"))
-                   (callback-fn)))
+    (cond
+      (= status 409)
+      (js/alert "email address already added")
+      (= status 201)
+      (js/alert "signed you up"))
+    (callback-fn)))
 
 (defn join-mail-list-req [email-address callback-fn]
   (post-request env/JOIN_MAIL_LIST_URL
