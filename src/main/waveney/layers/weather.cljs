@@ -1,7 +1,9 @@
 (ns waveney.layers.weather
   (:require [waveney.integrations.openweather :as ow]
             [waveney.app-state :refer [app-state]]
-            [waveney.carto :as carto]))
+            [waveney.carto :as carto]
+            ["recharts" :refer [ResponsiveContainer LineChart Line XAxis YAxis 
+                                Tooltip Legend CartesianGrid]]))
 
 (def weather-layers
   [{:display-name "Cloud Cover"
@@ -24,44 +26,61 @@
                                   weather-layer)
                            (carto/update-weather-url! map-url))}]])
 
-(defn format-time [time-str]
-  (let [[_ date time] (re-find #"(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2})" time-str)]
-    (str date " " time)))
 
-(defn weather-data-table [{:keys [timezone longitude
-                                  latitude hourly]}]
+(defn format-weather-data [{:keys [timezone longitude
+                                   latitude hourly]}]
   (let [{:keys [time
                 temperature_2m
                 relative_humidity_2m
                 wind_speed_10m]} hourly]
-    [:div {:style {:overflow-x "scroll"}}
-     [:div.data
-      [:table
-       [:tr
-        (map (fn [t]
-               [vector :td t])
-             time)]
-       [:tr
-        (map (fn [temp]
-               [:td 
-                (str temp " °C")])
-             temperature_2m)]
-       [:tr
-        (map (fn [hum]
-               [:td [:h5 "Relative Humidity: "]
-                hum])
-             relative_humidity_2m)]]]]))
+    (map
+     (fn [time temp hum win]
+       {:time time
+        :temperature temp
+        :humidity hum
+        :wind win})
+     time
+     temperature_2m
+     relative_humidity_2m
+     wind_speed_10m)))
 
+
+
+(defn weather-chart [data]
+  [:> ResponsiveContainer {:width "100%" :height 300}
+   [:> LineChart {:data data
+                  :margin {:top 5 :right 30 :left 20 :bottom 5}}
+    [:> CartesianGrid {:strokeDasharray "3 3"}]
+    [:> XAxis {:dataKey "time"}]
+    [:> YAxis]
+    [:> Tooltip]
+    [:> Legend]
+    [:> Line {:type "monotone"
+              :dataKey "temperature"
+              :stroke "#ffa600"
+              :dot false}]
+    [:> Line {:type "monotone"
+              :dataKey "humidity"
+              :dot false
+              :stroke "#bc5090"}]
+    [:> Line {:type "monotone"
+              :dataKey "wind"
+              :dot false
+              :stroke "#003f5c"}]]])
 
 (defn view []
   (let [weather-data (:weather-at-loc @app-state)]
-    [:div.weather-view 
+    [:div.weather-view
      (into
       [:fieldset.weather-layer
-       [:legend "Select a weather layer:"]]
+       [:legend "Current weather map:"]]
       (map weather-layer->radio-button
            weather-layers))
-     
+
      (if weather-data
-       [weather-data-table weather-data]
+       [:div.forecast
+        [:h3 {:style {:text-align "center"}}
+         "Forecast at location: "
+         (str (->> @app-state :clicked-location))]
+        [weather-chart (format-weather-data weather-data)]]
        [:p "Click map to show forcast at location"])]))

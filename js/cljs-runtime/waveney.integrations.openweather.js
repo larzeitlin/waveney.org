@@ -2,10 +2,10 @@ goog.provide('waveney.integrations.openweather');
 waveney.integrations.openweather.__GT_weather_map_url = (function waveney$integrations$openweather$__GT_weather_map_url(ow_layer_id){
 return ["https://tile.openweathermap.org/map/",cljs.core.str.cljs$core$IFn$_invoke$arity$1(ow_layer_id),"/{z}/{x}/{y}.png?appid=",waveney.env.OPENWEATHER_API_KEY].join('');
 });
-waveney.integrations.openweather.coords__GT_forecast_url = (function waveney$integrations$openweather$coords__GT_forecast_url(p__22250){
-var vec__22251 = p__22250;
-var lon = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22251,(0),null);
-var lat = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__22251,(1),null);
+waveney.integrations.openweather.coords__GT_forecast_url = (function waveney$integrations$openweather$coords__GT_forecast_url(p__20222){
+var vec__20223 = p__20222;
+var lon = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20223,(0),null);
+var lat = cljs.core.nth.cljs$core$IFn$_invoke$arity$3(vec__20223,(1),null);
 return ["https://api.open-meteo.com/v1/forecast?latitude=",cljs.core.str.cljs$core$IFn$_invoke$arity$1(lat),"&longitude=",cljs.core.str.cljs$core$IFn$_invoke$arity$1(lon),"&current=temperature_2m,wind_speed_10m&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m"].join('');
 });
 waveney.integrations.openweather.get_request = (function waveney$integrations$openweather$get_request(url,callback){
