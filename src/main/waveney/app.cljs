@@ -121,7 +121,7 @@
                (clj->js {:source (ol-XYZ.
                                   (clj->js {:url (str "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid="
                                                       openweather-api-key
-                                                      "")
+                                                      )
                                             :attributions "&copy; <a href=\"https://openweathermap.org/\">OpenWeatherMap</a>"}))
                          :opacity 0.7}))]
      :target "map"
