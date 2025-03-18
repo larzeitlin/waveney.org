@@ -9,29 +9,29 @@ waveney.app.placeholder_view = (function waveney$app$placeholder_view(){
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"text-align","text-align",1786091845),"center"], null)], null),"Coming Soon"], null);
 });
 waveney.app.views = new cljs.core.PersistentVector(null, 6, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"id","id",-1388402092),new cljs.core.Keyword(null,"view.history","view.history",-1944458796),new cljs.core.Keyword(null,"display-name","display-name",694513143),"History",new cljs.core.Keyword(null,"view","view",1247994814),waveney.layers.history.view], null),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"id","id",-1388402092),new cljs.core.Keyword(null,"view.trails","view.trails",-1815009603),new cljs.core.Keyword(null,"display-name","display-name",694513143),"Trails",new cljs.core.Keyword(null,"view","view",1247994814),waveney.layers.trails.view], null),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"id","id",-1388402092),new cljs.core.Keyword(null,"view.pubs","view.pubs",-610486814),new cljs.core.Keyword(null,"display-name","display-name",694513143),"Pubs",new cljs.core.Keyword(null,"view","view",1247994814),waveney.layers.pubs.view], null),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"id","id",-1388402092),new cljs.core.Keyword(null,"view.weather","view.weather",-884255383),new cljs.core.Keyword(null,"display-name","display-name",694513143),"Weather",new cljs.core.Keyword(null,"view","view",1247994814),waveney.layers.weather.view], null),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"id","id",-1388402092),new cljs.core.Keyword(null,"view.ecology","view.ecology",941948894),new cljs.core.Keyword(null,"display-name","display-name",694513143),"Ecology",new cljs.core.Keyword(null,"view","view",1247994814),waveney.layers.restoration.view], null),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"id","id",-1388402092),new cljs.core.Keyword(null,"view.links","view.links",-569847884),new cljs.core.Keyword(null,"display-name","display-name",694513143),"Links",new cljs.core.Keyword(null,"view","view",1247994814),waveney.layers.links.view], null)], null);
-waveney.app._STAR_view_state = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(cljs.core.first(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__20243_SHARP_){
-return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"view.weather","view.weather",-884255383),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__20243_SHARP_));
+waveney.app._STAR_view_state = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(cljs.core.first(cljs.core.filter.cljs$core$IFn$_invoke$arity$2((function (p1__20250_SHARP_){
+return cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(new cljs.core.Keyword(null,"view.weather","view.weather",-884255383),new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(p1__20250_SHARP_));
 }),waveney.app.views)));
-waveney.app.view_button = (function waveney$app$view_button(p__20244){
-var map__20245 = p__20244;
-var map__20245__$1 = cljs.core.__destructure_map(map__20245);
-var view = map__20245__$1;
-var id = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20245__$1,new cljs.core.Keyword(null,"id","id",-1388402092));
-var display_name = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20245__$1,new cljs.core.Keyword(null,"display-name","display-name",694513143));
+waveney.app.view_button = (function waveney$app$view_button(p__20251){
+var map__20252 = p__20251;
+var map__20252__$1 = cljs.core.__destructure_map(map__20252);
+var view = map__20252__$1;
+var id = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20252__$1,new cljs.core.Keyword(null,"id","id",-1388402092));
+var display_name = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20252__$1,new cljs.core.Keyword(null,"display-name","display-name",694513143));
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button.category","button.category",-815777465),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (){
 return cljs.core.reset_BANG_(waveney.app._STAR_view_state,view);
 }),new cljs.core.Keyword(null,"data-selected","data-selected",1971571373),cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(id,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(cljs.core.deref(waveney.app._STAR_view_state))),new cljs.core.Keyword(null,"id","id",-1388402092),id], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),display_name], null)], null);
 });
 waveney.app.view_buttons = (function waveney$app$view_buttons(){
-return cljs.core.into.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.categories","div.categories",358341752)], null),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__20246_SHARP_){
-return (new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[waveney.app.view_button,p1__20246_SHARP_],null));
+return cljs.core.into.cljs$core$IFn$_invoke$arity$2(new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.categories","div.categories",358341752)], null),cljs.core.map.cljs$core$IFn$_invoke$arity$2((function (p1__20253_SHARP_){
+return (new cljs.core.PersistentVector(null,2,(5),cljs.core.PersistentVector.EMPTY_NODE,[waveney.app.view_button,p1__20253_SHARP_],null));
 }),waveney.app.views));
 });
-waveney.app.render_view = (function waveney$app$render_view(p__20247){
-var map__20248 = p__20247;
-var map__20248__$1 = cljs.core.__destructure_map(map__20248);
-var display_name = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20248__$1,new cljs.core.Keyword(null,"display-name","display-name",694513143));
-var view = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20248__$1,new cljs.core.Keyword(null,"view","view",1247994814));
+waveney.app.render_view = (function waveney$app$render_view(p__20254){
+var map__20255 = p__20254;
+var map__20255__$1 = cljs.core.__destructure_map(map__20255);
+var display_name = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20255__$1,new cljs.core.Keyword(null,"display-name","display-name",694513143));
+var view = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__20255__$1,new cljs.core.Keyword(null,"view","view",1247994814));
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.view","div.view",-1680900976),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"text-align","text-align",1786091845),"center"], null)], null),display_name], null),new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [view], null)], null);
 });
 if((typeof waveney !== 'undefined') && (typeof waveney.app !== 'undefined') && (typeof waveney.app.email_STAR_ !== 'undefined')){
@@ -47,8 +47,8 @@ return cljs.core.boolean$(cljs.core.re_matches(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+
 waveney.app.join_mail_list = (function waveney$app$join_mail_list(){
 var email = cljs.core.deref(waveney.app.email_STAR_);
 var submit_button_disabled_QMARK_ = (!(waveney.app.validish_email_QMARK_(email)));
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.join","div.join",-1216328363),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),"Sign up to stay updated"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"type","type",1174270348),"email",new cljs.core.Keyword(null,"id","id",-1388402092),"email",new cljs.core.Keyword(null,"name","name",1843675177),"email",new cljs.core.Keyword(null,"value","value",305978217),email,new cljs.core.Keyword(null,"on-change","on-change",-732046149),(function (p1__20249_SHARP_){
-return cljs.core.reset_BANG_(waveney.app.email_STAR_,p1__20249_SHARP_.target.value);
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div.join","div.join",-1216328363),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"h3","h3",2067611163),"Sign up to stay updated"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"type","type",1174270348),"email",new cljs.core.Keyword(null,"id","id",-1388402092),"email",new cljs.core.Keyword(null,"name","name",1843675177),"email",new cljs.core.Keyword(null,"value","value",305978217),email,new cljs.core.Keyword(null,"on-change","on-change",-732046149),(function (p1__20256_SHARP_){
+return cljs.core.reset_BANG_(waveney.app.email_STAR_,p1__20256_SHARP_.target.value);
 }),new cljs.core.Keyword(null,"placeholder","placeholder",-104873083),"enter email address"], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"button","button",1456579943),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (){
 return waveney.db.join_mail_list_req(email,waveney.app.reset_email_field_to_empty);
 }),new cljs.core.Keyword(null,"disabled","disabled",-1529784218),submit_button_disabled_QMARK_,new cljs.core.Keyword(null,"style","style",-496642736),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"background-color","background-color",570434026),((clojure.string.blank_QMARK_(email))?"gray":((submit_button_disabled_QMARK_)?"gray":"green"

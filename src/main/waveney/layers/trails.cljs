@@ -19,13 +19,6 @@
    [:td "Follows River Waveney and Little Ouse, passes Roman ruins, medieval castles, manor houses"]
    [:td "Great Yarmouth"]]
   [:tr
-   [:td [:a {:href "https://www.komoot.com/collection/1063967/windmills-meadows-and-the-river-waveney-hiking-the-angles-way"} "Angles Way (7-day route)"]]
-   [:td "Great Yarmouth to Thetford"]
-   [:td "99 miles"]
-   [:td "Moderate - 4-7 hours/day"]
-   [:td "Norfolk Broads, marshlands, farmland, heaths, castles, manor houses"]
-   [:td "Great Yarmouth"]]
-  [:tr
    [:td [:a {:href "https://visitwaveneyvalley.co.uk/walking/"} "Boudicca Way"]]
    [:td "Diss to Norwich"]
    [:td "36 miles"]
