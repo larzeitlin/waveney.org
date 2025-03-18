@@ -1,32 +1,32 @@
 goog.provide('waveney.layers.weather');
 var module$node_modules$recharts$lib$index=shadow.js.require("module$node_modules$recharts$lib$index", {});
 waveney.layers.weather.weather_layers = new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"display-name","display-name",694513143),"Cloud Cover",new cljs.core.Keyword(null,"id","id",-1388402092),new cljs.core.Keyword("waveney.layers.weather","cloud","waveney.layers.weather/cloud",-1427057314),new cljs.core.Keyword(null,"map-url","map-url",883598604),waveney.integrations.openweather.__GT_weather_map_url("clouds_new")], null),new cljs.core.PersistentArrayMap(null, 3, [new cljs.core.Keyword(null,"display-name","display-name",694513143),"Precipitation",new cljs.core.Keyword(null,"id","id",-1388402092),new cljs.core.Keyword("waveney.layers.weather","precipitation","waveney.layers.weather/precipitation",866647452),new cljs.core.Keyword(null,"map-url","map-url",883598604),waveney.integrations.openweather.__GT_weather_map_url("precipitation_new")], null)], null);
-waveney.layers.weather.weather_layer__GT_radio_button = (function waveney$layers$weather$weather_layer__GT_radio_button(p__22147){
-var map__22148 = p__22147;
-var map__22148__$1 = cljs.core.__destructure_map(map__22148);
-var weather_layer = map__22148__$1;
-var id = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22148__$1,new cljs.core.Keyword(null,"id","id",-1388402092));
-var display_name = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22148__$1,new cljs.core.Keyword(null,"display-name","display-name",694513143));
-var map_url = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22148__$1,new cljs.core.Keyword(null,"map-url","map-url",883598604));
+waveney.layers.weather.weather_layer__GT_radio_button = (function waveney$layers$weather$weather_layer__GT_radio_button(p__26597){
+var map__26598 = p__26597;
+var map__26598__$1 = cljs.core.__destructure_map(map__26598);
+var weather_layer = map__26598__$1;
+var id = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26598__$1,new cljs.core.Keyword(null,"id","id",-1388402092));
+var display_name = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26598__$1,new cljs.core.Keyword(null,"display-name","display-name",694513143));
+var map_url = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26598__$1,new cljs.core.Keyword(null,"map-url","map-url",883598604));
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"label.weather-layer","label.weather-layer",659113449),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"for","for",-1323786319),cljs.core.name(id)], null),display_name], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"type","type",1174270348),"radio",new cljs.core.Keyword(null,"id","id",-1388402092),cljs.core.name(id),new cljs.core.Keyword(null,"value","value",305978217),cljs.core.name(id),new cljs.core.Keyword(null,"name","name",1843675177),"weather-layer",new cljs.core.Keyword(null,"checked","checked",-50955819),cljs.core._EQ_.cljs$core$IFn$_invoke$arity$2(id,new cljs.core.Keyword(null,"id","id",-1388402092).cljs$core$IFn$_invoke$arity$1(new cljs.core.Keyword(null,"weather-layer","weather-layer",1380434068).cljs$core$IFn$_invoke$arity$1(cljs.core.deref(waveney.app_state.app_state)))),new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (){
 cljs.core.swap_BANG_.cljs$core$IFn$_invoke$arity$4(waveney.app_state.app_state,cljs.core.assoc,new cljs.core.Keyword(null,"weather-layer","weather-layer",1380434068),weather_layer);
 
 return waveney.carto.update_weather_url_BANG_(map_url);
 })], null)], null)], null);
 });
-waveney.layers.weather.format_weather_data = (function waveney$layers$weather$format_weather_data(p__22149){
-var map__22150 = p__22149;
-var map__22150__$1 = cljs.core.__destructure_map(map__22150);
-var timezone = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22150__$1,new cljs.core.Keyword(null,"timezone","timezone",1831928099));
-var longitude = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22150__$1,new cljs.core.Keyword(null,"longitude","longitude",-1268876372));
-var latitude = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22150__$1,new cljs.core.Keyword(null,"latitude","latitude",394867543));
-var hourly = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22150__$1,new cljs.core.Keyword(null,"hourly","hourly",-1529948525));
-var map__22151 = hourly;
-var map__22151__$1 = cljs.core.__destructure_map(map__22151);
-var time = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22151__$1,new cljs.core.Keyword(null,"time","time",1385887882));
-var temperature_2m = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22151__$1,new cljs.core.Keyword(null,"temperature_2m","temperature_2m",867288347));
-var relative_humidity_2m = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22151__$1,new cljs.core.Keyword(null,"relative_humidity_2m","relative_humidity_2m",-109285559));
-var wind_speed_10m = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__22151__$1,new cljs.core.Keyword(null,"wind_speed_10m","wind_speed_10m",1718122772));
+waveney.layers.weather.format_weather_data = (function waveney$layers$weather$format_weather_data(p__26599){
+var map__26600 = p__26599;
+var map__26600__$1 = cljs.core.__destructure_map(map__26600);
+var timezone = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26600__$1,new cljs.core.Keyword(null,"timezone","timezone",1831928099));
+var longitude = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26600__$1,new cljs.core.Keyword(null,"longitude","longitude",-1268876372));
+var latitude = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26600__$1,new cljs.core.Keyword(null,"latitude","latitude",394867543));
+var hourly = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26600__$1,new cljs.core.Keyword(null,"hourly","hourly",-1529948525));
+var map__26601 = hourly;
+var map__26601__$1 = cljs.core.__destructure_map(map__26601);
+var time = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26601__$1,new cljs.core.Keyword(null,"time","time",1385887882));
+var temperature_2m = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26601__$1,new cljs.core.Keyword(null,"temperature_2m","temperature_2m",867288347));
+var relative_humidity_2m = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26601__$1,new cljs.core.Keyword(null,"relative_humidity_2m","relative_humidity_2m",-109285559));
+var wind_speed_10m = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__26601__$1,new cljs.core.Keyword(null,"wind_speed_10m","wind_speed_10m",1718122772));
 return cljs.core.map.cljs$core$IFn$_invoke$arity$variadic((function (time__$1,temp,hum,win){
 return new cljs.core.PersistentArrayMap(null, 4, [new cljs.core.Keyword(null,"time","time",1385887882),time__$1,new cljs.core.Keyword(null,"temperature","temperature",899018429),temp,new cljs.core.Keyword(null,"humidity","humidity",-2051231184),hum,new cljs.core.Keyword(null,"wind","wind",-527553074),win], null);
 }),time,temperature_2m,relative_humidity_2m,cljs.core.prim_seq.cljs$core$IFn$_invoke$arity$2([wind_speed_10m], 0));

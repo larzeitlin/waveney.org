@@ -6,23 +6,24 @@
             [waveney.carto :as carto]
             [waveney.layers.links :as layers.links]
             [waveney.layers.weather :as layers.weather]
+            [waveney.layers.pubs :as layers.pubs]
             [waveney.app-state :refer [app-state]]))
 
 (defn header []
   [:header
-   [:h1 "waveney.org"]])
+   [:div.header
+    [:h1 "waveney.org"]
+    [:button.login 
+     "Login"]]])
 
 (defn coming-soon []
   [:div.coming-soon
    [:h2 "Coming Soon"]
-   [:p "Meandering through the ecology, culture and history of the Waveney Valley region."
-    [:br]
-    "•"
-    [:br]
-    "A homegrown online hub away from the corporate web."
-    [:br]
-    "•"
-    [:br]
+   [:p
+    "Meandering through the ecology, culture and history of the Waveney Valley region."]
+   [:p
+    "A homegrown online hub away from the corporate web, bots and generated content."]
+   [:p
     "To contribute please reach out with the contact link below, or sign up to our mailing list for updates."]])
 
 (defn placeholder-view []
@@ -52,7 +53,7 @@
     :view placeholder-view}
    {:id :view.pubs
     :display-name "Pubs"
-    :view placeholder-view}
+    :view layers.pubs/view}
    {:id :view.events
     :display-name "Event"
     :view placeholder-view}

@@ -1,0 +1,9 @@
+{
+"version":3,
+"file":"shadow.js.shim.module$ol$Feature$default.js",
+"lineCount":3,
+"mappings":"AAAAA,IAAKC,CAAAA,OAAL,CAAa,0CAAb,CAAA;AACAC,MAAOC,CAAAA,EAAGC,CAAAA,IAAKC,CAAAA,yBAAf,GAA2CH,MAAOC,CAAAA,EAAGG,CAAAA,OAAV,CAAkB,gCAAlB,EAAoD,EAApD,CAAA,CAAwD,SAAxD,CAA3C;;",
+"sources":["shadow.js.shim.module$ol$Feature$default.js"],
+"sourcesContent":["goog.provide(\"shadow.js.shim.module$ol$Feature$default\");\nshadow.js.shim.module$ol$Feature$default = shadow.js.require(\"module$node_modules$ol$Feature\", {})[\"default\"];\n"],
+"names":["goog","provide","shadow","js","shim","module$ol$Feature$default","require"]
+}
