@@ -7,7 +7,11 @@
             [waveney.layers.links :as layers.links]
             [waveney.layers.weather :as layers.weather]
             [waveney.layers.pubs :as layers.pubs]
-            [waveney.app-state :refer [app-state]]))
+            [waveney.app-state :refer [app-state]]
+            [waveney.layers.restoration :as layers.restoration]
+            [waveney.layers.trails :as layers.trails]
+            [waveney.layers.history :as layers.history]
+            ))
 
 (defn header []
   [:header
@@ -22,7 +26,7 @@
    [:p
     "Meandering through the ecology, culture and history of the Waveney Valley region."]
    [:p
-    "A homegrown online hub away from the corporate web, bots and generated content."]
+    "A homegrown online hub away from the corporate web."]
    [:p
     "To contribute please reach out with the contact link below, or sign up to our mailing list for updates."]])
 
@@ -30,42 +34,21 @@
   [:h3 {:style {:text-align "center"}} "Coming Soon"])
 
 (def views
-  [{:id :view.wildlife
-    :display-name "Wildlife"
-    :view placeholder-view}
-   {:id :view.history
+  [{:id :view.history
     :display-name "History"
-    :view placeholder-view}
-   {:id :view.folklore
-    :display-name "Folklore"
-    :view placeholder-view}
+    :view layers.history/view}
    {:id :view.trails
-    :display-name "trails"
-    :view placeholder-view}
-   {:id :view.music
-    :display-name "Music"
-    :view placeholder-view}
-   {:id :view.art
-    :display-name "Art"
-    :view placeholder-view}
-   {:id :view.activities
-    :display-name "Activities"
-    :view placeholder-view}
+    :display-name "Trails"
+    :view layers.trails/view}
    {:id :view.pubs
     :display-name "Pubs"
     :view layers.pubs/view}
-   {:id :view.events
-    :display-name "Event"
-    :view placeholder-view}
    {:id :view.weather
     :display-name "Weather"
     :view layers.weather/view}
    {:id :view.ecology
     :display-name "Ecology"
-    :view placeholder-view}
-   {:id :view.photos
-    :display-name "Photos"
-    :view placeholder-view}
+    :view layers.restoration/view}
    {:id :view.links
     :display-name "Links"
     :view layers.links/view}])
